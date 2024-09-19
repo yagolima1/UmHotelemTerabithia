@@ -1,4 +1,3 @@
-# UmHotelemTerabithia.
 Dedico este repositório para a atividade: "Um hotel em Terabithia."
 
 # Este repositório ainda está em desenvolvimento!
