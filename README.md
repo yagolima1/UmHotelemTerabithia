@@ -1,4 +1,4 @@
-Dedico este repositório para a atividade: "Um hotel em Terabithia."
+Dedico este repositório para a atividade: "Um Hotel em Terabithia."
 
 # Este repositório ainda está em desenvolvimento!
 
