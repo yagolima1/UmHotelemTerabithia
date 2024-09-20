@@ -1,6 +1,6 @@
 Dedico este repositório para a atividade: "Um Hotel em Terabithia."
 
-# Este repositório ainda está em desenvolvimento!
+# Ainda está em desenvolvimento! (falta a parte dos eventos)
 
 # Um Hotel em Terabithia
 
