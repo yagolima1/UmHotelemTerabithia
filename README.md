@@ -1,7 +1,9 @@
 Dedico este repositório para a atividade: "Um Hotel em Terabithia."
 
 # OBS: Em breve pretendo fazer um remaster deste episódio.
-## Os comentários foram gerados com IA
+## Os comentários foram gerados por IA.
+
+<br>
 
 # Um Hotel em Terabithia
 
