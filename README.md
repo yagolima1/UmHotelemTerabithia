@@ -1,6 +1,7 @@
 Dedico este repositório para a atividade: "Um Hotel em Terabithia."
 
-# Ainda está em desenvolvimento! (falta a parte dos eventos)
+# OBS: Em breve pretendo fazer um remaster deste episódio.
+## Os comentários foram gerados com IA
 
 # Um Hotel em Terabithia
 
