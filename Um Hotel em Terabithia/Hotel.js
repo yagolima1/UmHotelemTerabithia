@@ -55,7 +55,7 @@ function saudaçao (){
 // Função principal que apresenta as opções ao usuário
 function HOME() {
 
-    var opçoes = parseInt(prompt('Por gentileza, selecione uma opção: 1)  Reserva de Quartos | 2)  Cadastro de Hóspedes | 3)  Eventos | 4)  Abastecimento de Carros | 5)  Manutenção | 6)  Sair'));
+    var opçoes = parseInt(prompt('Por gentileza, selecione uma opção: \n1)  Reserva de Quartos | \n2)  Cadastro de Hóspedes | \n3)  Eventos | \n4)  Abastecimento de Carros | \n5)  Manutenção | \n6)  Sair'));
     
     switch (opçoes){ // Verifica a opção escolhida
 
