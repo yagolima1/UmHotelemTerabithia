@@ -1,4 +1,4 @@
-let usuario = prompt(" 🛎️ Saudações, digite seu nome: "); // Solicita o nome do usuário
+let usuario = prompt(" 🛎️ Saudações, digite seu nome: ").toUpperCase(); // Solicita o nome do usuário
 
 let ListaDeHospedes = []; // Inicializa a lista de hóspedes
 
@@ -24,9 +24,7 @@ let Quartos = [ // Cria um array com os quartos e seus estados (livre ou ocupado
     ['quarto19', 'livre'],
     ['quarto20', 'livre'],
 
-]; 
-
-// ... até 'quarto20'
+];  // ... até 'quarto20'
 
 // Função para realizar o login
 function login (){
@@ -57,7 +55,7 @@ function saudaçao (){
 // Função principal que apresenta as opções ao usuário
 function HOME() {
 
-    var opçoes = parseInt(prompt('Por gentileza, selecione uma opção: 1) Reserva de Quartos | 2) Cadastro de Hóspedes | 3) Abastecimento de Carros | 4) Manutenção | 5) Sair'));
+    var opçoes = parseInt(prompt('Por gentileza, selecione uma opção: 1)  Reserva de Quartos | 2)  Cadastro de Hóspedes | 3)  Eventos | 4)  Abastecimento de Carros | 5)  Manutenção | 6)  Sair'));
     
     switch (opçoes){ // Verifica a opção escolhida
 
@@ -70,16 +68,20 @@ function HOME() {
             break;
 
         case 3:
-            abastecer_carros(); // Chama a função de abastecimento de carros
+            eventos();  // Chama a função de eventos
             break;
 
         case 4:
-            manutençao(); // Chama a função de manutenção
+            abastecer_carros();  // Chama a função de abastecimento de carros
             break;
 
         case 5:
-            SAIR(); // Chama a função para sair
+            manutençao();  // Chama a função de manutenção
             break;  
+
+        case 6:
+            SAIR(); // Chama a função para sair
+            break;
 
         default:
             ERRO(); // Chama a função de erro
@@ -399,6 +401,149 @@ function abastecer_carros() {
     HOME(); // Retorna ao menu principal
 }
 
+function eventos() {
+    alert('HOTEL Yana Bliss - EVENTOS'); // Exibe uma mensagem informando que é a seção de eventos
+
+    var auditorio_escolhido = ""; // Inicializa a variável para armazenar o auditório escolhido
+
+    // Define a capacidade dos auditórios
+    var auditorio_laranja = 150; // Capacidade do Auditório Laranja
+    var auditorio_colorado = 350; // Capacidade do Auditório Colorado
+
+    // Solicita o número de convidados para o evento
+    var convidados = parseInt(prompt("Informe o número de convidados para o Evento: "));
+
+    // Valida o número de convidados
+    if (convidados > 350 || convidados <= 0 || isNaN(convidados)) {
+
+        alert("Número de convidados inválido! Tente novamente."); // Mensagem de erro para número inválido
+        eventos(); // Rechama a função para tentar novamente
+    } 
+    // Verifica se o número de convidados cabe no Auditório Laranja
+    else if (convidados > auditorio_laranja && convidados <= 220) {
+
+        var calculo_audiLaranja = convidados - auditorio_laranja; // Calcula quantas cadeiras a mais são necessárias
+
+        auditorio_escolhido = "Auditório Laranja"; // Define o auditório escolhido
+
+        alert("Use o Auditório Laranja (inclua mais " + calculo_audiLaranja + " cadeira(s) )"); // Informa sobre a necessidade de mais cadeiras
+        alert("Agora vamos ver a agenda do evento."); // Informa que a agenda será verificada
+    } 
+    // Se o número de convidados cabe no Auditório Laranja
+    else if (convidados <= auditorio_laranja) {
+
+        auditorio_escolhido = "Auditório Laranja"; // Define o auditório escolhido
+
+        alert("Use o Auditório Laranja."); // Informa que o auditório Laranja é o escolhido
+
+        alert("Agora vamos ver a agenda do evento."); // Informa que a agenda será verificada
+    } 
+    // Verifica se o número de convidados cabe no Auditório Colorado
+    else if (convidados > 220 && convidados <= auditorio_colorado) {
+
+        auditorio_escolhido = "Auditório Colorado"; // Define o auditório escolhido
+
+        alert("Use o Auditório Colorado"); // Informa que o auditório Colorado é o escolhido
+
+        alert("Agora vamos ver a agenda do evento."); // Informa que a agenda será verificada
+    }
+
+    alert('HOTEL Yana Bliss - AGENDA DE EVENTOS'); // Informa que agora será definida a agenda do evento
+
+    // Solicita informações sobre o evento
+    var dia_do_evento = prompt("Qual será o dia do seu evento ?").toLowerCase(); // Dia do evento
+
+    var hora_do_evento = parseInt(prompt("Qual será a hora do seu evento ?")); // Hora do evento
+
+    var empresa_evento = prompt("Qual a empresa que está organizando o evento ?").toUpperCase(); // Nome da empresa organizadora
+
+    var auditorio = false; // Inicializa a variável de controle para a disponibilidade do auditório
+
+    // Verifica se o dia e hora do evento são válidos
+    if (["segunda", "terça", "terca", "quarta", "quinta", "sexta"].includes(dia_do_evento) && hora_do_evento >= 7 && hora_do_evento <= 23) {
+
+        auditorio = true; // Define que o auditório está disponível
+    }
+
+    else if (["sabado", "domingo"].includes(dia_do_evento) && hora_do_evento >= 7 && hora_do_evento <= 15) {
+
+        auditorio = true; // Define que o auditório está disponível para fins de semana
+    }
+
+    // Verifica se o auditório foi reservado com sucesso
+    if (auditorio) {
+
+        alert("Auditório reservado para: " + empresa_evento + ". " + dia_do_evento + " às " + hora_do_evento + " horas"); // Confirma a reserva do auditório
+
+    } 
+    
+    else {
+
+        alert("Auditório Indisponível!"); // Mensagem de erro se o auditório não está disponível
+
+    }
+
+    // Solicita a duração do evento em horas
+    var duracao_do_evento = parseInt(prompt("Qual a duração do evento em horas ?"));
+
+    // Calcula o número de garçons necessários
+    var calculo_garçom1 = Math.ceil(convidados / 12); // Um garçom para cada 12 convidados
+    var calculo_garçom2 = Math.ceil(duracao_do_evento / 2); // Um garçom para cada 2 horas de evento
+
+    var total_de_garçons = (calculo_garçom1 + calculo_garçom2); // Total de garçons necessários
+
+    var tarifa_garçom = 10.50; // Tarifa por garçom
+    var preço_total_garçons = (total_de_garçons * duracao_do_evento * tarifa_garçom); // Custo total dos garçons
+
+    alert("Serão necessários " + total_de_garçons + " garçons para o evento."); // Informa a quantidade de garçons
+    alert("O custo será de: R$" + preço_total_garçons.toFixed(2)); // Informa o custo total dos garçons
+
+    alert("Agora vamos calcular o custo do buffet do hotel para o evento."); // Informa que o custo do buffet será calculado
+
+    alert('HOTEL Yana Bliss - BUFFET DO EVENTO'); // Informa que agora será tratado o buffet do evento
+
+    // Calcula a quantidade de insumos necessários para o buffet
+    var Lcafe = (convidados * 0.2); // Litros de café
+    var Lagua = (convidados * 0.5); // Litros de água
+    var Usalgados = (convidados * 7); // Unidades de salgados
+
+    // Calcula o custo de cada insumo
+    var custo_cafe = (Lcafe * 0.80); // Custo do café
+    var custo_agua = (Lagua * 0.40); // Custo da água
+    var custo_salgado = Math.ceil(Usalgados / 100) * 34; // Custo dos salgados
+
+    var total_buffet = (custo_cafe + custo_agua + custo_salgado); // Custo total do buffet
+    total_buffet = total_buffet.toFixed(2); // Formata o total do buffet para duas casas decimais
+
+    var total_evento = (parseFloat(preço_total_garçons) + parseFloat(total_buffet).toFixed(2)); // Custo total do evento
+
+    // Informa a quantidade de insumos necessários para o buffet
+    alert("O evento precisará de: " + Lcafe + " litros de café, " + Lagua + " litros de água e " + Usalgados + " unidades de salgados.");
+
+    // Exibe um resumo dos detalhes do evento
+    alert("\nEvento no " + auditorio_escolhido + 
+          "\nNome da Empresa: " + empresa_evento + 
+          "\nDia do Evento: " + dia_do_evento + 
+          "\nHora do Evento: " + hora_do_evento + 
+          "\nDuração do Evento: " + duracao_do_evento + 
+          "\nTotal de Convidados: " + convidados + 
+          "\nTotal de Garçons: " + total_de_garçons + 
+          "\nPreço Total dos Garçons: R$" + preço_total_garçons.toFixed(2) + 
+          "\nCusto do Buffet: R$" + total_buffet + 
+          "\nTotal do Evento: R$" + total_evento); // Exibe um resumo do custo total do evento
+
+    // Solicita a confirmação da reserva
+    var confirmacao = prompt("Gostaria de efetuar a reserva ? S/N").toUpperCase();
+
+    // Verifica a resposta do usuário
+    if (confirmacao === 'S') {
+        console.log("Reserva efetuada com sucesso."); // Confirma a reserva
+    } else {
+        console.log("Reserva não efetuada."); // Informa que a reserva não foi realizada
+        HOME(); // Retorna ao menu principal
+    }
+}
+
 // Função para manutenção
 function manutençao (){
 
@@ -459,7 +604,7 @@ function manutençao (){
 // Função para tratar erros
 function ERRO() {
 
-    alert('Por favor, informe um número entre 1 e 4'); // Mensagem de erro
+    alert('Por favor, informe um número entre 1 e 6'); // Mensagem de erro
 
     HOME(); // Retorna ao menu principal
 }
